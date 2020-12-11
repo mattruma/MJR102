@@ -25,6 +25,13 @@ namespace FunctionApp1
             var multipartMemoryStreamProvider =
                 new MultipartMemoryStreamProvider();
 
+            if (!req.Content.IsMimeMultipartContent())
+            {
+                log.LogError("No file was provided.");
+
+                return new BadRequestObjectResult("At least one file is required.");
+            }
+
             await req.Content.ReadAsMultipartAsync(multipartMemoryStreamProvider);
 
             var fileNames = new List<string>();
