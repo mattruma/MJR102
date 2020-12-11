@@ -47,8 +47,9 @@ namespace FunctionApp1
                     Environment.GetEnvironmentVariable("StorageContainerEndPoint");
 
                 // https://docs.microsoft.com/en-us/azure/storage/common/storage-auth-aad-msi
+                // https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet
 
-                var tokenCredential = new DefaultAzureCredential();
+                var tokenCredential = new ManagedIdentityCredential();
 
                 var containerClient =
                     new BlobContainerClient(new Uri(storageContainerEndPoint), tokenCredential);
