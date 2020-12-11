@@ -11,7 +11,7 @@ namespace FunctionApp1
     {
         [FunctionName(nameof(Function0))]
         public static IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
             ILogger log)
         {
             log.LogInformation($"{nameof(Function0)} function processed a request.");
