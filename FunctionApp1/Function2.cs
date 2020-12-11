@@ -56,6 +56,8 @@ namespace FunctionApp1
                 // https://docs.microsoft.com/en-us/azure/storage/common/storage-auth-aad-msi
                 // https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet
 
+                // If running local, EnvironmentCredentials will be used, when running in Azure ManagedIdentityCredentials will be used
+
                 var tokenCredential = new DefaultAzureCredential();
 
                 var containerClient =

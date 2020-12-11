@@ -24,9 +24,6 @@ namespace FunctionApp1
 
             log.LogInformation("Sending {0:N0} message(s) every {1:N0} second(s) for {2:N0} second(s)", options.Quantity, options.Interval, options.Duration);
 
-            log.LogInformation($"Message                     : {options.Message}");
-            log.LogInformation($"Event Hub Connection String : {options.EventHubConnectionString}");
-
             var eventHubProducerClient =
                 new EventHubProducerClient(
                     options.EventHubConnectionString);
@@ -106,7 +103,7 @@ namespace FunctionApp1
 
             if (elapsedTime > 1000) elapsedTimeString = $"{ts.Seconds} second(s)";
 
-            log.LogInformation("{0}: Sent {1:N0} message(s), took {2}.", DateTime.Now, quantity, elapsedTimeString);
+            log.LogInformation("Sent {1:N0} message(s), took {2}.", quantity, elapsedTimeString);
         }
     }
 
