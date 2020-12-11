@@ -49,7 +49,7 @@ namespace FunctionApp1
                 // https://docs.microsoft.com/en-us/azure/storage/common/storage-auth-aad-msi
                 // https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet
 
-                var tokenCredential = new ManagedIdentityCredential();
+                var tokenCredential = new DefaultAzureCredential();
 
                 var containerClient =
                     new BlobContainerClient(new Uri(storageContainerEndPoint), tokenCredential);
