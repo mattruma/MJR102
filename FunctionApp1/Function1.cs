@@ -109,4 +109,29 @@ namespace FunctionApp1
             log.LogInformation("{0}: Sent {1:N0} message(s), took {2}.", DateTime.Now, quantity, elapsedTimeString);
         }
     }
+
+    public class Function1Options
+    {
+        public string EventHubConnectionString { get; set; }
+
+        public int Quantity { get; set; } = 10;
+
+        public int Interval { get; set; } = 1;
+
+        public int Duration { get; set; } = 10;
+
+        public string Message { get; set; } = "Hello, world!";
+
+        public Function1Options()
+        {
+            this.EventHubConnectionString =
+                Environment.GetEnvironmentVariable("EventHubConnectionString");
+
+            if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("Message")))
+            {
+                this.Message =
+                    Environment.GetEnvironmentVariable("Message");
+            }
+        }
+    }
 }
