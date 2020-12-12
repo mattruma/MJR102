@@ -22,6 +22,20 @@ The supported parameters are as follows:
 * `--end-point` The Azure Function Url.
 * `--quantity` The number of times to call the end point.
 
+## Azure
+
+The Azure environment consists of the following:
+
+* (1) Resource Group
+* (1) Event Hub, Basic Pricing Tier
+* (1) Storage Account
+* (1) App Service Plan, P1V2, Linux
+* (2) Function Apps, added to the App Service Plan
+* (2) App Insights, one for each Function App
+* (2) Azure Storage, one for each Function App
+
+![Azure Resources](2020-12-12_7-43-55.jpg)
+
 ## Links
 
 Azure Function Timeouts <https://docs.microsoft.com/en-us/azure/azure-functions/functions-scale#timeout>
