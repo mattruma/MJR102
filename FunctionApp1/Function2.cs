@@ -36,6 +36,8 @@ namespace FunctionApp1
 
             var fileNames = new List<string>();
 
+            log.LogInformation($"Uploading {multipartMemoryStreamProvider.Contents.Count} files...");
+
             foreach (var file in multipartMemoryStreamProvider.Contents)
             {
                 var fileInfo =
@@ -46,6 +48,8 @@ namespace FunctionApp1
 
                 var fileName =
                     $"{Guid.NewGuid()}{Path.GetExtension(fileInfo.FileName)}";
+
+                log.LogInformation($"Uploading {fileName}...");
 
                 log.LogInformation(
                     JsonConvert.SerializeObject(fileInfo, Formatting.Indented));
@@ -67,8 +71,12 @@ namespace FunctionApp1
 
                 await containerClient.UploadBlobAsync(fileName, await file.ReadAsStreamAsync());
 
+                log.LogInformation($"File uploaded.");
+
                 fileNames.Add(fileName);
             }
+
+            log.LogInformation($"Files uploaded.");
 
             return new OkObjectResult(fileNames);
         }
