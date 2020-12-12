@@ -22,6 +22,7 @@ The supported parameters are as follows:
 * `--end-point` The Azure Function Url.
 * `--quantity` The number of times to call the end point.
 
+
 ## Azure
 
 The Azure environment consists of the following:
@@ -34,7 +35,35 @@ The Azure environment consists of the following:
 * (2) App Insights, one for each Function App
 * (2) Azure Storage, one for each Function App
 
+Enable **Managed Identity** on the Azure Functions.
+
+Add the Azure Function managed identities with `Blob Storage Contributor` rights to Azure Storage.
+
 ![Azure Resources](2020-12-12_7-43-55.jpg)
+
+## Local Development
+
+For local development add a `local.settings.json` file that includes the following:
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "EventHubConnectionString": "EVENT_HUB_CONNECTION_STRING",
+    "Message": "",
+    "StorageContainerEndPoint": "STORAGE_END_POINT",
+    "AZURE_TENANT_ID": "AZURE_TENANT_ID",
+    "AZURE_CLIENT_ID": "AZURE_CLIENT_ID",
+    "AZURE_CLIENT_SECRET": "AZURE_CLIENT_SECRET"
+  }
+}
+```
+
+Create an App Registration in Azure and give it the same permissions as the Managed Identities in the previous step, and provide values for the `AZURE_` variables.
+
+This will allow you to run the Function App locally with no code changes.
 
 ## Links
 
