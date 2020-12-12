@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
+using RestSharp;
 using System;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
@@ -42,26 +40,28 @@ namespace ConsoleApp1
                 throw new ArgumentOutOfRangeException($"Parameter --endPoint is required. It can be provide at runtime or stored in appsettings.json.");
             }
 
-            using (var httpClient = new HttpClient())
-            {
-                var file = File.ReadAllBytes(fileName);
+            Console.WriteLine($"Uploading {quantity} files...");
 
-                var byteArrayContent = new ByteArrayContent(file);
-
-                byteArrayContent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
-
-                for (var index = 1; index <= quantity; index++)
+            var restClient =
+                new RestClient(endPoint)
                 {
-                    Console.WriteLine($"Uploading file {index} of {quantity}...");
+                    Timeout = -1
+                };
 
-                    var response = await httpClient.PostAsync(endPoint, new MultipartFormDataContent());
+            var request = new RestRequest(Method.POST);
 
-                    response.EnsureSuccessStatusCode();
+            request.AddFile("file1", fileName);
 
-                    Console.WriteLine("File uploaded.");
-                }
+            for (var index = 1; index <= quantity; index++)
+            {
+                Console.WriteLine($"Uploading file {index} of {quantity}...");
 
+                await restClient.ExecuteAsync(request);
+
+                Console.WriteLine("File uploaded.");
             }
+
+            Console.WriteLine("Files uploaded.");
 
             Console.WriteLine("Press any key to exit...");
 
