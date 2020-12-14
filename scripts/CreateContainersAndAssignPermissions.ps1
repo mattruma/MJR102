@@ -20,11 +20,8 @@ $StorageAccount02 = (az storage account show --name "$($ResourcePrefix)st02" --r
 
 $AppReg = (az ad app list --display-name "$($ResourcePrefix)appreg") | ConvertFrom-Json
 
-az role assignment create --role "Storage Blob Data Contributor" --assignee $AppReg.appId --scope "$($StorageAccount01.id)/blobServices/default/containers/$($ResourcePrefix)func01-01"
-az role assignment create --role "Storage Blob Data Contributor" --assignee $AppReg.appId --scope "$($StorageAccount02.id)/blobServices/default/containers/$($ResourcePrefix)func01-01"
-
-az role assignment create --role "Storage Blob Data Contributor" --assignee $AppReg.appId --scope "$($StorageAccount01.id)/blobServices/default/containers/$($ResourcePrefix)func02-01"
-az role assignment create --role "Storage Blob Data Contributor" --assignee $AppReg.appId --scope "$($StorageAccount02.id)/blobServices/default/containers/$($ResourcePrefix)func02-01"
+az role assignment create --role "Storage Blob Data Contributor" --assignee $AppReg.appId --scope $StorageAccount01.id
+az role assignment create --role "Storage Blob Data Contributor" --assignee $AppReg.appId --scope $StorageAccount02.id
 
 # Add access for function app 01
 
@@ -32,8 +29,8 @@ $ResourceName = "$($ResourcePrefix)func01"
 
 $Resource = (az functionapp identity show --name $ResourceName --resource-group $ResourceGroupName) | ConvertFrom-Json
 
-az role assignment create --role "Storage Blob Data Contributor" --assignee $Resource.principalId --scope "$($StorageAccount01.id)/blobServices/default/containers/$($ResourcePrefix)func01-01"
-az role assignment create --role "Storage Blob Data Contributor" --assignee $Resource.principalId --scope "$($StorageAccount02.id)/blobServices/default/containers/$($ResourcePrefix)func01-01"
+az role assignment create --role "Storage Blob Data Contributor" --assignee $Resource.principalId --scope $StorageAccount01.id
+az role assignment create --role "Storage Blob Data Contributor" --assignee $Resource.principalId --scope $StorageAccount02.id
 
 # Add access for function app 02
 
@@ -41,6 +38,6 @@ $ResourceName = "$($ResourcePrefix)func02"
 
 $Resource = (az functionapp identity show --name $ResourceName --resource-group $ResourceGroupName) | ConvertFrom-Json
 
-az role assignment create --role "Storage Blob Data Contributor" --assignee $Resource.principalId --scope "$($StorageAccount01.id)/blobServices/default/containers/$($ResourcePrefix)func02-01"
-az role assignment create --role "Storage Blob Data Contributor" --assignee $Resource.principalId --scope "$($StorageAccount02.id)/blobServices/default/containers/$($ResourcePrefix)func02-01"
+az role assignment create --role "Storage Blob Data Contributor" --assignee $Resource.principalId --scope $StorageAccount01.id
+az role assignment create --role "Storage Blob Data Contributor" --assignee $Resource.principalId --scope $StorageAccount02.id
 
