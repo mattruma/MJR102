@@ -29,7 +29,7 @@ The Azure environment consists of the following:
 
 * (1) Resource Group
 * (1) Event Hub, Basic Pricing Tier
-* (1) Storage Account
+* (2) Storage Account, one standard, and the other Data Laka Storage, for testing
 * (1) App Service Plan, P1V2, Linux
 * (2) Function Apps, added to the App Service Plan
 * (2) App Insights, one for each Function App
@@ -38,6 +38,8 @@ The Azure environment consists of the following:
 Enable **Managed Identity** on the Azure Functions.
 
 Add the Azure Function managed identities with `Blob Storage Contributor` rights to Azure Storage.
+
+You can run the script `CreateContainersAndAssignPermissions.ps` in the `scripts` folder to create the containers in the Storage Accounts and assign permissions.
 
 ![Azure Resources](2020-12-12_7-43-55.jpg)
 
