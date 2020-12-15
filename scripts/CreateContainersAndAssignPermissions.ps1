@@ -1,7 +1,6 @@
 param(
-    
     [Parameter(Mandatory = $true)]
-    [string]$ResourcePrefix
+    [String] $ResourcePrefix
 )
 
 $ResourceGroupName = "$($ResourcePrefix)rg"

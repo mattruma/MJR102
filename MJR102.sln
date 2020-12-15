@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30709.64
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionApp1", "FunctionApp1\FunctionApp1.csproj", "{BBEA4523-B4B1-4EC0-A14C-432540B77D83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionApp1", "FunctionApp1\FunctionApp1.csproj", "{BBEA4523-B4B1-4EC0-A14C-432540B77D83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionApp2", "FunctionApp2\FunctionApp2.csproj", "{2F021C18-909C-4CDD-B684-EA1FB43C899A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionApp2", "FunctionApp2\FunctionApp2.csproj", "{2F021C18-909C-4CDD-B684-EA1FB43C899A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{F16AF185-80CB-423F-BF09-8164E98EE4F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{F16AF185-80CB-423F-BF09-8164E98EE4F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
