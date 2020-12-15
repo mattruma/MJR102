@@ -1,7 +1,6 @@
 ﻿using Azure.Identity;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Azure;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 
 [assembly: FunctionsStartup(typeof(FunctionApp1.Startup))]
@@ -14,8 +13,6 @@ namespace FunctionApp1
         {
             var services =
                 builder.Services;
-
-            services.AddHttpClient();
 
             services.AddAzureClients(builder =>
             {
